@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            height: 100vh;
+        }
+
+        .signup-box {
+
+            width: 400px;
+
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 12px;
+
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input {
+
+            width: 100%;
+
+            padding: 12px;
+
+            margin-bottom: 12px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 8px;
+
+            box-sizing: border-box;
+        }
+
+        button {
+
+            width: 100%;
+
+            padding: 12px;
+
+            border: none;
+
+            background: #2563eb;
+
+            color: white;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="signup-box">
+
+    <h2>회원가입</h2>
+
+    <form id="signupForm">
+
+        <input
+                type="text"
+                id="name"
+                placeholder="이름"
+                required
+        >
+
+        <input
+                type="email"
+                id="email"
+                placeholder="이메일"
+                required
+        >
+
+        <input
+                type="password"
+                id="password"
+                placeholder="비밀번호"
+                required
+        >
+
+        <input
+                type="text"
+                id="companyName"
+                placeholder="회사명"
+        >
+
+        <button type="submit">
+            회원가입
+        </button>
+
+    </form>
+
+</div>
+
+<script>
+
+    document
+        .getElementById("signupForm")
+        .addEventListener("submit", async function (e) {
+
+            e.preventDefault();
+
+            const data = {
+
+                name:
+                    document.getElementById("name").value,
+
+                email:
+                    document.getElementById("email").value,
+
+                password:
+                    document.getElementById("password").value,
+
+                companyName:
+                    document.getElementById("companyName").value
+            };
+
+            const response = await fetch(
+                "/api/users/signup",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify(data)
+                }
+            );
+
+            const result = await response.text();
+
+            alert(result);
+
+        });
+
+</script>
+
+</body>
+</html>
