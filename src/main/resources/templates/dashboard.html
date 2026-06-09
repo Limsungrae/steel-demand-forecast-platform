@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>철강 대시보드 테스트</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f4f6f9; }
+        .grid { display: flex; gap: 20px; }
+        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); width: 200px; }
+        .number { font-size: 24px; font-weight: bold; color: #333; margin-top: 10px; }
+        .danger { color: red; }
+    </style>
+</head>
+<body>
+<h2>📊 철강 수요 예측 대시보드 (<span th:text="${currentMonth}">17-Jan</span> 기준)</h2>
+<hr>
+<div class="grid">
+    <div class="card">
+        <div>예측 수요량</div>
+        <div class="number" th:text="${summary.totalPredictedDemand} + ' 톤'">0 톤</div>
+    </div>
+    <div class="card">
+        <div>현재 재고량</div>
+        <div class="number" th:text="${summary.totalCurrentStock} + ' 톤'">0 톤</div>
+    </div>
+    <div class="card">
+        <div>부족 예상량</div>
+        <div class="number danger" th:text="${summary.totalShortage} + ' 톤'">0 톤</div>
+    </div>
+    <div class="card">
+        <div>리스크 현황</div>
+        <div class="number" th:text="${summary.riskLevel}">정상</div>
+    </div>
+</div>
+</body>
+</html>

@@ -39,4 +39,9 @@ public class SteelData extends BaseEntity {
 
     // 재고량
     private Double inventoryAmount;
+    // 예측 수요량
+    private Double predictedDemand;
+
+    // 안전 재고량
+    private Double safetyStock;
 }
