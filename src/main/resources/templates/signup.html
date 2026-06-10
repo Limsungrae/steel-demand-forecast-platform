@@ -1,155 +1,230 @@
 <!DOCTYPE html>
-<html lang="ko">
+
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
-    <title>회원가입</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SteelForecast 회원가입</title>
 
-    <style>
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f6f9;
+    <link rel="stylesheet" th:href="@{/css/signup.css}">
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-            height: 100vh;
-        }
 
-        .signup-box {
-
-            width: 400px;
-
-            background: white;
-
-            padding: 30px;
-
-            border-radius: 12px;
-
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        input {
-
-            width: 100%;
-
-            padding: 12px;
-
-            margin-bottom: 12px;
-
-            border: 1px solid #ddd;
-
-            border-radius: 8px;
-
-            box-sizing: border-box;
-        }
-
-        button {
-
-            width: 100%;
-
-            padding: 12px;
-
-            border: none;
-
-            background: #2563eb;
-
-            color: white;
-
-            border-radius: 8px;
-
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #1d4ed8;
-        }
-
-    </style>
 </head>
 
 <body>
 
-<div class="signup-box">
+<header class="header">
 
-    <h2>회원가입</h2>
 
-    <form id="signupForm">
+    <div class="logo">
+        <img th:src="@{/images/steel-logo.png}"
+             alt="SteelForecast Logo">
+    </div>
 
-        <input
-                type="text"
-                id="name"
-                placeholder="이름"
-                required
-        >
+    <nav>
+        <ul class="menu">
+            <li><a href="#">대시보드</a></li>
+            <li><a href="#">예측 분석</a></li>
+            <li><a href="#">품목별 상세</a></li>
+            <li><a href="#">마이페이지</a></li>
+        </ul>
+    </nav>
 
-        <input
-                type="email"
-                id="email"
-                placeholder="이메일"
-                required
-        >
+    <div class="auth-buttons">
+        <a href="/login" class="login-link">로그인</a>
+        <a href="/signup" class="signup-btn">회원가입</a>
+    </div>
 
-        <input
-                type="password"
-                id="password"
-                placeholder="비밀번호"
-                required
-        >
 
-        <input
-                type="text"
-                id="companyName"
-                placeholder="회사명"
-        >
+</header>
 
-        <button type="submit">
-            회원가입
-        </button>
+<main class="signup-page">
 
-    </form>
 
-</div>
+    <section class="signup-card">
+
+        <div class="signup-badge">
+            AI Demand Forecast Platform
+        </div>
+
+        <h1>회원가입</h1>
+
+        <p class="subtitle">
+            SteelForecast 계정을 생성해주세요.
+        </p>
+
+        <form id="signupForm">
+
+            <div class="form-group">
+
+                <label>이름</label>
+
+                <div class="input-box">
+                    <i class="fa-regular fa-user"></i>
+
+                    <input
+                            type="text"
+                            id="name"
+                            placeholder="이름을 입력해주세요"
+                            required>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>이메일</label>
+
+                <div class="input-box">
+                    <i class="fa-regular fa-envelope"></i>
+
+                    <input
+                            type="email"
+                            id="email"
+                            placeholder="이메일을 입력해주세요"
+                            required>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>비밀번호</label>
+
+                <div class="input-box">
+                    <i class="fa-solid fa-lock"></i>
+
+                    <input
+                            type="password"
+                            id="password"
+                            placeholder="비밀번호를 입력해주세요"
+                            required>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>비밀번호 확인</label>
+
+                <div class="input-box">
+                    <i class="fa-solid fa-lock"></i>
+
+                    <input
+                            type="password"
+                            id="passwordConfirm"
+                            placeholder="비밀번호를 다시 입력해주세요"
+                            required>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>회사명</label>
+
+                <div class="input-box">
+                    <i class="fa-regular fa-building"></i>
+
+                    <input
+                            type="text"
+                            id="companyName"
+                            placeholder="회사명을 입력해주세요">
+                </div>
+
+            </div>
+
+            <label class="check-box">
+
+                <input
+                        type="checkbox"
+                        id="agree"
+                        required>
+
+                <span>
+                이용약관 및 개인정보 처리방침에 동의합니다.
+            </span>
+
+            </label>
+
+            <button
+                    type="submit"
+                    class="signup-submit">
+
+                회원가입
+
+            </button>
+
+            <div class="bottom-text">
+
+                이미 계정이 있으신가요?
+
+                <a href="/login">
+                    로그인
+                </a>
+
+            </div>
+
+        </form>
+
+    </section>
+    ```
+
+</main>
 
 <script>
 
     document
-        .getElementById("signupForm")
-        .addEventListener("submit", async function (e) {
+    .getElementById("signupForm")
+    .addEventListener("submit", async function(e){
 
-            e.preventDefault();
+        e.preventDefault();
 
-            const data = {
+        const password =
+            document.getElementById("password").value;
 
-                name:
-                    document.getElementById("name").value,
+        const passwordConfirm =
+            document.getElementById("passwordConfirm").value;
 
-                email:
-                    document.getElementById("email").value,
+        if(password !== passwordConfirm){
 
-                password:
-                    document.getElementById("password").value,
+            alert("비밀번호가 일치하지 않습니다.");
 
-                companyName:
-                    document.getElementById("companyName").value
-            };
+            return;
+        }
+
+        const data = {
+
+            name:
+                document.getElementById("name").value,
+
+            email:
+                document.getElementById("email").value,
+
+            password:
+                password,
+
+            companyName:
+                document.getElementById("companyName").value
+        };
+
+        try{
 
             const response = await fetch(
                 "/api/users/signup",
                 {
-                    method: "POST",
+                    method:"POST",
 
-                    headers: {
-                        "Content-Type": "application/json"
+                    headers:{
+                        "Content-Type":"application/json"
                     },
 
-                    body: JSON.stringify(data)
+                    body:JSON.stringify(data)
                 }
             );
 
@@ -157,7 +232,17 @@
 
             alert(result);
 
-        });
+            if(result === "회원가입 성공"){
+
+                location.href="/login";
+            }
+
+        }catch(error){
+
+            alert("서버 연결 실패");
+        }
+
+    });
 
 </script>
 

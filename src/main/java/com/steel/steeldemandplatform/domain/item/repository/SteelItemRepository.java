@@ -7,5 +7,8 @@ import java.util.Optional;
 
 public interface SteelItemRepository
         extends JpaRepository<SteelItem, Long> {
-    Optional<SteelItem> findByItemCode(String itemCode);
+
+    Optional<SteelItem> findByItemCode(
+            String itemCode
+    );
 }

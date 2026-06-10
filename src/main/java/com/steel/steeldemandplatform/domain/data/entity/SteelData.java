@@ -13,35 +13,29 @@ import lombok.*;
 @Table(name = "steel_data")
 public class SteelData extends BaseEntity {
 
-    // 데이터 PK
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // 품목
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "item_id")
     private SteelItem steelItem;
 
-    // 기준 연월
-    // 예: 2025-01
     @Column(nullable = false)
     private String targetMonth;
 
     // 생산량
     private Double productionAmount;
 
-    // 국내 판매량
-    private Double domesticSales;
-
-    // 수출량
-    private Double exportAmount;
+    // 실제 수요량
+    private Double demandAmount;
 
     // 재고량
     private Double inventoryAmount;
-    // 예측 수요량
+
+    // AI 예측 수요량
     private Double predictedDemand;
 
-    // 안전 재고량
+    // 안전재고
     private Double safetyStock;
 }
